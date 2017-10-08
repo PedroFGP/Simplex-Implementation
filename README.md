@@ -17,3 +17,8 @@ Desenvolvido no IDE Visual Studio com a linguagem C#.
 ![FrontEnd 2](https://imgur.com/F1Fz3pA.png)
 
 ![FrontEnd 3](https://imgur.com/KboRzK7.png)
+
+## Créditos
+
+Pedro Pereira (Front End, deploy e ajuda no Back End)
+Débora Deslandes (Back End)
