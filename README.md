@@ -1,11 +1,10 @@
-
 # Objetivo
 
 Implementar o Simplex de Vettsel e colocar a aplicação em nuvem.
 
 ## Back End
 
-Back End desenvolvido no IDE Eclipse com a linguagem Java.
+Back End desenvolvido no IDE Eclipse com a linguagem Java e utilizado o serviço de hospedagem do Azure.
 
 ## Front End
 
