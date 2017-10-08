@@ -1,3 +1,4 @@
+
 # Objetivo
 
 Implementar o Simplex de Vettsel e colocar a aplicação em nuvem.
@@ -21,4 +22,5 @@ Desenvolvido no IDE Visual Studio com a linguagem C#.
 ## Créditos
 
 **Pedro Pereira** (Front End, deploy e ajuda no Back End)  
-**Débora Deslandes** (Back End)
+**Débora Deslandes** (Back End)  
+**Ícone** feito por [Autor](https://www.flaticon.com/authors/smashicons "Smashicons") do site www.flaticon.com
