@@ -20,5 +20,5 @@ Desenvolvido no IDE Visual Studio com a linguagem C#.
 
 ## Créditos
 
-Pedro Pereira (Front End, deploy e ajuda no Back End)
-Débora Deslandes (Back End)
+**Pedro Pereira** (Front End, deploy e ajuda no Back End)  
+**Débora Deslandes** (Back End)
