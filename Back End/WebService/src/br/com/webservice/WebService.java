@@ -27,11 +27,11 @@ class CellDouble {
         this.upperCell = up;
         this.lowerCell = low;
     }
-}//end célula
+}//end cÃ©lula
 
 class Simplex {
     
-    //Declaração de variáveis
+    //DeclaraÃ§Ã£o de variÃ¡veis
     public String variableValue = "";
     public String variable = "";
     public int pointRow = 0;
@@ -73,8 +73,8 @@ class Simplex {
         }
     }
     /*
-    * Tratar a função objetiva recebida
-    * Obter a quantidade de variáveis e a quantidade de restrições
+    * Tratar a funÃ§Ã£o objetiva recebida
+    * Obter a quantidade de variÃ¡veis e a quantidade de restriÃ§Ãµes
     */
     public void TreatFO (String FOType, String z,int restrictions, String matrixIn[][]){
         String zSplit [] = z.split(" ");
@@ -86,7 +86,7 @@ class Simplex {
         List<String> fo = new ArrayList<String>();
         List<String> listVariables = new ArrayList<String>();
         
-        //Leitura da função objetiva 
+        //Leitura da funÃ§Ã£o objetiva 
         for (int k = 0; k < zSplit.length; k++){
            count = 0;
            for (int i = 0; i < zSplit[k].length(); i++){
@@ -116,10 +116,10 @@ class Simplex {
             variableValue = "";
         }
         
-        //Definição do número de variáveis do problema
+        //DefiniÃ§Ã£o do nÃºmero de variÃ¡veis do problema
         int variables = listVariables.size();
 
-        //Tratamento da FO caso ela seja de maximização
+        //Tratamento da FO caso ela seja de maximizaÃ§Ã£o
         fo.add("0");
         if(FOType.equals("MAX")) {
             for (String value: listValues) {
@@ -138,10 +138,10 @@ class Simplex {
         TreatRestrictions(variables, restrictions, matrixIn,fo);
     }
     /*
-    * Cria matriz transformando as restrições recebidas nas funções de membros livres do simplex
+    * Cria matriz transformando as restriÃ§Ãµes recebidas nas funÃ§Ãµes de membros livres do simplex
     */
     public void TreatRestrictions(int variables, int restrictions, String matrixIn[][],List<String> fo){
-        //tratar restrições para formato Simplex 1
+        //tratar restriÃ§Ãµes para formato Simplex 1
         int tam = variables + (variables - 1)+2;
         double matrixR [][] = new double [restrictions][variables + 1];
         
@@ -157,24 +157,29 @@ class Simplex {
                 matrixR[l][0] = Double.parseDouble("-" + matrixIn[l][tam-1]); //-
             }
             
+            int count = 0;
+            
             for (int j = 1; j < tam-2; j++){
                 String celula = matrixIn[l][j-1];
 
                 if (celula.equals("+") || celula.equals("-")){
                     if(j <= tam-2){
                         celula = matrixIn[l][j];
+                        j++;
                     }else{
                         break;
                     }
                 }
 
+                count++;
+                
                 double temp = Double.parseDouble(celula);
                 temp = temp * (-1);
                 if (temp >= 0){
                     temp = temp * -1;
-                    matrixR[l][j] = temp;
+                    matrixR[l][count] = temp;
                 }else if (temp < 0){
-                    matrixR[l][j] = (lessOrEqual) ? (-1) * temp : temp;
+                    matrixR[l][count] = (lessOrEqual) ? (-1) * temp : temp;
                 }
             }
         }
@@ -184,7 +189,7 @@ class Simplex {
         
     }//end TreatRestrictions
     /*
-    * Montagem da primeira matriz que passarápelo simplex
+    * Montagem da primeira matriz que passarÃ¡pelo simplex
     */
     public void matrix01(double matrixR [][],int r, int v, List<String> fo) {
         int row = r+1;
@@ -209,7 +214,7 @@ class Simplex {
             }
         }
         
-        //Preencher restrições
+        //Preencher restriÃ§Ãµes
         for (int l = 1;l < row; l++) {
             for (int c = 0; c < v+1; c++){
                 double temp = matrixR[l-1][c];
@@ -222,7 +227,7 @@ class Simplex {
         simplex1(matrix1,row,col);
     }
     /*
-    * Método de repetição Simplex
+    * MÃ©todo de repetiÃ§Ã£o Simplex
     */
     public void simplex1 (CellDouble matrix1 [][],int row, int col) {
         //Montar Matriz Simplex 1
@@ -266,7 +271,7 @@ class Simplex {
             matrixSimplexCompleta[0][j] = "x"+ val;
         }
         //printMatrix(matrixSimplexCompleta,r,c);
-        //Repetição
+        //RepetiÃ§Ã£o
         while(OnceMore == true) {
             int pointNegRow = simplexFaseOne(matrix1,row,col);
             //Se linha com ML negativo
@@ -291,18 +296,18 @@ class Simplex {
             }else {
                 //se f(x) positivo ignorando ML
                 boolean posFX = simplex2Fx(matrixSimplex,row,col);
-                //Método 2 fase 1
+                //MÃ©todo 2 fase 1
                 if (posFX == true){
                     boolean pos = simplex2Pos(matrixSimplex,row,col);
-                    //Método 2 fase 2
+                    //MÃ©todo 2 fase 2
                     if (pos == true){
-                        //Método 2 fase 3
+                        //MÃ©todo 2 fase 3
                         fase3 = true;  
                     }else {
-                        //Se tem FX positivo e se na coluna positiva desse elemento não existir elemento positivo
+                        //Se tem FX positivo e se na coluna positiva desse elemento nÃ£o existir elemento positivo
                     }
                 }else {
-                    //Se não existir elemento positivo em fx
+                    //Se nÃ£o existir elemento positivo em fx
                 }
             }        
         }
@@ -331,7 +336,7 @@ class Simplex {
         return pointNegRow;
     } 
    /*
-    * Conferir a existência de um elemento negativo na linha que tem ML negativo
+    * Conferir a existÃªncia de um elemento negativo na linha que tem ML negativo
     */ 
     public boolean simplexFase2(CellDouble matrix1[][], int row, int col, int pointNegRow) {
         boolean neg = false;
@@ -346,7 +351,7 @@ class Simplex {
         return neg;
     }
     /*
-    * Verifica se todos os elementos são positivos
+    * Verifica se todos os elementos sÃ£o positivos
     */
     public boolean AllPositive (CellDouble matrixSimplex[][], int row, int col) {
         boolean positive = false;
@@ -382,7 +387,7 @@ class Simplex {
         pointRow = 0+1;
         for (int i = 0; i < vet.length; i++) {    
             if (vet[i] < small){
-                pointRow = i + 1; //+1 porque o vetor não recebe FO, logo ele ignora uma linha da matriz 
+                pointRow = i + 1; //+1 porque o vetor nÃ£o recebe FO, logo ele ignora uma linha da matriz 
                 small = vet[i];
             }
         }
@@ -423,14 +428,14 @@ class Simplex {
         return fillTable(matrix1, row, col,matrixSimplexCompleta);
     }
     /*
-     * Preenchimento dos campos não permissivos
+     * Preenchimento dos campos nÃ£o permissivos
      */
     public CellDouble [][] fillTable (CellDouble matrix1[][], int row, int col,String matrixSimplexCompleta[][]) {
         for (int i = 0; i < row; i++){
             for (int j = 0; j < col; j++) {
-                //se linha e coluna não forem as permissíveis
+                //se linha e coluna nÃ£o forem as permissÃ­veis
                 if (j != pointCol && i != pointRow) {
-                    //SCI = SCS(da coluna atual na linha permissivel) * SCI(coluna permissível na linha atual)
+                    //SCI = SCS(da coluna atual na linha permissivel) * SCI(coluna permissÃ­vel na linha atual)
                     matrix1[i][j].lowerCell = (matrix1[pointRow][j].upperCell * matrix1[i][pointCol].lowerCell);
                 }
             }
@@ -438,7 +443,7 @@ class Simplex {
         //Print
         //printMatrix(matrix1,row,col);
         
-        //trocar linha permissivel com coluna permissível]
+        //trocar linha permissivel com coluna permissÃ­vel]
         String temp = matrixSimplexCompleta[pointRow+1][0];
         //original upper = pointCol & lower = pointRow
         matrixSimplexCompleta[pointRow+1][0] = matrixSimplexCompleta[0][pointCol+1];
@@ -449,7 +454,7 @@ class Simplex {
     /*
      * Nova tabela trocando as SCS pelas SCI na linha e coluna permissiva
      * SCI = 0
-     * SCS das não permisivas = SCS + SCI
+     * SCS das nÃ£o permisivas = SCS + SCI
      */
     public CellDouble[][]  newTable(CellDouble matrix1[][], int row, int col, String matrixSimplexCompleta [][]){
         CellDouble matrix2 [][] = new CellDouble[row][col];
@@ -472,7 +477,7 @@ class Simplex {
         //printMatrix(matrix2,row,col);
         return matrix2;
     }
-    //Método 2 Simplex
+    //MÃ©todo 2 Simplex
     /*
      * Procura elemento positivo no F(X) ignorando o ML
      */
@@ -528,7 +533,7 @@ class Simplex {
         pointRow = 0+1;
         for (int i = 0; i < vet.length; i++) {    
             if (vet[i] < small){
-                pointRow = i + 1; //+1 porque o vetor não recebe FO, logo ele ignora uma linha da matriz 
+                pointRow = i + 1; //+1 porque o vetor nÃ£o recebe FO, logo ele ignora uma linha da matriz 
                 small = vet[i];
             }
         }
@@ -572,14 +577,14 @@ class Simplex {
     public CellDouble [][] fillTable2 (CellDouble matrix2[][],int row,int col, String matrixSimplexCompleta [][]){
         for (int i = 0; i < row; i++){
             for (int j = 0; j < col; j++) {
-                //se linha e coluna não forem as permissíveis
+                //se linha e coluna nÃ£o forem as permissÃ­veis
                 if (j != pointCol && i != pointRow) {
-                    //SCI = SCS(da coluna atual na linha permissivel) * SCI(coluna permissível na linha atual)
+                    //SCI = SCS(da coluna atual na linha permissivel) * SCI(coluna permissÃ­vel na linha atual)
                     matrix2[i][j].lowerCell = (matrix2[pointRow][j].upperCell * matrix2[i][pointCol].lowerCell);
                 }
             }
         }
-        //trocar linha permissivel com coluna permissível]
+        //trocar linha permissivel com coluna permissÃ­vel]
         String temp = matrixSimplexCompleta[pointRow+1][0];
         //original upper = pointCol & lower = pointRow
         matrixSimplexCompleta[pointRow+1][0] = matrixSimplexCompleta[0][pointCol+1];
@@ -588,7 +593,7 @@ class Simplex {
         return newTable2(matrix2,row,col,matrixSimplexCompleta);
     }
     /*
-     * Nova tabela pós troca
+     * Nova tabela pÃ³s troca
      */
     public CellDouble [][] newTable2(CellDouble matrix1[][], int row, int col, String matrixSimplexCompleta [][]){
         //printMatrix(matrix1,row,col);
@@ -612,7 +617,7 @@ class Simplex {
         return matrix2;
     }
     /*
-     * Solução
+     * SoluÃ§Ã£o
      */
     public String solution (CellDouble matrix[][], int row, int col, String matrixSimplexCompleta [][]){   	
     	String message = "";
@@ -633,7 +638,7 @@ class Simplex {
             //busca elemento negativo na linha
             boolean neg = NegElement(matrix,row,col,MLneg);
             if (neg == true){
-                //Não fala o que fazer
+                //NÃ£o fala o que fazer
             	message = "Nao existe solucao padrao para esse problema!";
             }else {
             	message = "Solucao permissivel nao existe!";
@@ -643,7 +648,7 @@ class Simplex {
             if (pos == true){
                 for (int i = 1; i < row; i ++){
                     if(matrix[i][pointCol].upperCell > 0){
-                        //Não fala o que fazer
+                        //NÃ£o fala o que fazer
                     	message = "Nao existe solucao padrao para esse problema!";
                         i = row;
                         break;
@@ -658,7 +663,7 @@ class Simplex {
         
         message += "\n\n";
         
-        //Print da solução, valores da função objetiva Z, e das variaveis básicas
+        //Print da soluÃ§Ã£o, valores da funÃ§Ã£o objetiva Z, e das variaveis bÃ¡sicas
         for (int i = 1; i < row+1; i++) {
         	  message += matrixSimplexCompleta[i][0] + " = " + matrixSimplexCompleta[i][1] + '\n';
         }
