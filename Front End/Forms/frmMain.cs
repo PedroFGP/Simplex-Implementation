@@ -1,6 +1,7 @@
 ﻿using MetroFramework;
 using MetroFramework.Forms;
 using SimplexGUI.Classes;
+using SimplexGUI.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,7 +33,7 @@ namespace SimplexGUI
             //Adiciona a nova variável a lista
             Globals.SimplexVars.Add(new SimplexVariables
             {
-                Name = "x" + Globals.SimplexVars.Count(),
+                Name = "x" + (Globals.SimplexVars.Count()+1),
                 Value = 0.0d
             });
 
@@ -163,14 +164,25 @@ namespace SimplexGUI
             //Gera a lista de conteudo e faz o encoding dele
             var content = new FormUrlEncodedContent(GenerateContent());
 
-            //Faz a requisição POST e aguarda resposta
-            var response = await Globals.WebClient.PostAsync("https://simplexotimiza.azurewebsites.net/", content);
+            HttpResponseMessage response = null;
+
+            //Faz a requisição POST para a API selecionada e aguarda resposta
+            if (RbtnCustomAPI.Checked)
+            {
+                response = await Globals.WebClient.PostAsync("https://simplexotimiza.azurewebsites.net/", content);
+            }
+            else
+            {
+                response = await Globals.WebClient.PostAsync("https://glpkotimiza.azurewebsites.net/", content);
+            }
 
             //Extrai o texto da resposta
             var responseString = await response.Content.ReadAsStringAsync();
 
-            //Mostra a resposta para o usuário
-            MetroMessageBox.Show(this, responseString, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //Mostra a resposta para o usuário em uma outra tela
+            frmAnswer newForm = new frmAnswer(responseString.Replace("\n", Environment.NewLine));
+            newForm.Show();
+            newForm.Focus();
         }
 
         //Gera o conteúdo a partir dos dados informados
@@ -182,12 +194,28 @@ namespace SimplexGUI
             contentToEncode.Add("Type", (RbtnMax.Checked) ? "MAX" : "MIN");
             contentToEncode.Add("RestrictionCount", (Globals.SimplexProblem.Count - 1).ToString());
             contentToEncode.Add("VariableCount", Globals.SimplexVars.Count.ToString());
+            //contentToEncode.Add("PrintHistory", "1");
+
+            string fullDescription = "";
 
             //Pega todas as equações e as formata de maneira adequada
             foreach (var item in Globals.SimplexProblem)
             {
-                contentToEncode.Add(item.Name, item.GetFullEquationAlternative());
+                //Formata de acordo com a API escolhida
+                if(RbtnCustomAPI.Checked)
+                {
+                    contentToEncode.Add(item.Name, item.GetFullEquationAlternative());
+                }
+                else
+                {
+                    contentToEncode.Add(item.Name, item.GetFullEquation());
+                }
+
+                fullDescription += item.GetDescriptiveEquation() + ";";
             }
+
+            //Envia o problema original de maneira formatada
+            contentToEncode.Add("Description", fullDescription);
 
             return contentToEncode;
         }

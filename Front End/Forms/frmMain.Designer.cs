@@ -42,13 +42,20 @@
             this.RbtnMax = new MetroFramework.Controls.MetroRadioButton();
             this.RbtnMin = new MetroFramework.Controls.MetroRadioButton();
             this.BtnAddRestriction = new MetroFramework.Controls.MetroButton();
+            this.RbtnCustomAPI = new MetroFramework.Controls.MetroRadioButton();
+            this.RbtnGLPKAPI = new MetroFramework.Controls.MetroRadioButton();
+            this.LblAPI = new MetroFramework.Controls.MetroLabel();
+            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewProblem)).BeginInit();
+            this.metroPanel1.SuspendLayout();
+            this.metroPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // LblPreview
             // 
             this.LblPreview.AutoSize = true;
-            this.LblPreview.Location = new System.Drawing.Point(23, 103);
+            this.LblPreview.Location = new System.Drawing.Point(23, 142);
             this.LblPreview.Name = "LblPreview";
             this.LblPreview.Size = new System.Drawing.Size(139, 19);
             this.LblPreview.TabIndex = 2;
@@ -57,7 +64,7 @@
             // BtnSend
             // 
             this.BtnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BtnSend.Location = new System.Drawing.Point(23, 350);
+            this.BtnSend.Location = new System.Drawing.Point(23, 420);
             this.BtnSend.Name = "BtnSend";
             this.BtnSend.Size = new System.Drawing.Size(75, 23);
             this.BtnSend.TabIndex = 4;
@@ -68,7 +75,7 @@
             // BtnAddVar
             // 
             this.BtnAddVar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAddVar.Location = new System.Drawing.Point(584, 125);
+            this.BtnAddVar.Location = new System.Drawing.Point(584, 164);
             this.BtnAddVar.Name = "BtnAddVar";
             this.BtnAddVar.Size = new System.Drawing.Size(113, 23);
             this.BtnAddVar.TabIndex = 9;
@@ -79,7 +86,7 @@
             // BtnDeleteVar
             // 
             this.BtnDeleteVar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnDeleteVar.Location = new System.Drawing.Point(584, 154);
+            this.BtnDeleteVar.Location = new System.Drawing.Point(584, 193);
             this.BtnDeleteVar.Name = "BtnDeleteVar";
             this.BtnDeleteVar.Size = new System.Drawing.Size(113, 23);
             this.BtnDeleteVar.TabIndex = 10;
@@ -97,7 +104,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GridViewProblem.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.GridViewProblem.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.GridViewProblem.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.GridViewProblem.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -120,7 +126,7 @@
             this.GridViewProblem.EnableHeadersVisualStyles = false;
             this.GridViewProblem.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.GridViewProblem.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.GridViewProblem.Location = new System.Drawing.Point(23, 125);
+            this.GridViewProblem.Location = new System.Drawing.Point(23, 164);
             this.GridViewProblem.MultiSelect = false;
             this.GridViewProblem.Name = "GridViewProblem";
             this.GridViewProblem.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -134,7 +140,7 @@
             this.GridViewProblem.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.GridViewProblem.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.GridViewProblem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridViewProblem.Size = new System.Drawing.Size(555, 219);
+            this.GridViewProblem.Size = new System.Drawing.Size(555, 250);
             this.GridViewProblem.TabIndex = 11;
             this.GridViewProblem.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewProblem_CellEndEdit);
             this.GridViewProblem.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.GridViewProblem_DataError);
@@ -142,7 +148,7 @@
             // BtnRemoveRestriction
             // 
             this.BtnRemoveRestriction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnRemoveRestriction.Location = new System.Drawing.Point(584, 212);
+            this.BtnRemoveRestriction.Location = new System.Drawing.Point(584, 251);
             this.BtnRemoveRestriction.Name = "BtnRemoveRestriction";
             this.BtnRemoveRestriction.Size = new System.Drawing.Size(113, 23);
             this.BtnRemoveRestriction.TabIndex = 12;
@@ -153,7 +159,7 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(23, 68);
+            this.metroLabel1.Location = new System.Drawing.Point(0, 0);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(159, 19);
             this.metroLabel1.TabIndex = 13;
@@ -163,7 +169,7 @@
             // 
             this.RbtnMax.AutoSize = true;
             this.RbtnMax.Checked = true;
-            this.RbtnMax.Location = new System.Drawing.Point(188, 72);
+            this.RbtnMax.Location = new System.Drawing.Point(165, 4);
             this.RbtnMax.Name = "RbtnMax";
             this.RbtnMax.Size = new System.Drawing.Size(92, 15);
             this.RbtnMax.TabIndex = 14;
@@ -174,7 +180,7 @@
             // RbtnMin
             // 
             this.RbtnMin.AutoSize = true;
-            this.RbtnMin.Location = new System.Drawing.Point(286, 72);
+            this.RbtnMin.Location = new System.Drawing.Point(263, 4);
             this.RbtnMin.Name = "RbtnMin";
             this.RbtnMin.Size = new System.Drawing.Size(91, 15);
             this.RbtnMin.TabIndex = 15;
@@ -184,7 +190,7 @@
             // BtnAddRestriction
             // 
             this.BtnAddRestriction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAddRestriction.Location = new System.Drawing.Point(584, 183);
+            this.BtnAddRestriction.Location = new System.Drawing.Point(584, 222);
             this.BtnAddRestriction.Name = "BtnAddRestriction";
             this.BtnAddRestriction.Size = new System.Drawing.Size(113, 23);
             this.BtnAddRestriction.TabIndex = 16;
@@ -192,15 +198,77 @@
             this.BtnAddRestriction.UseSelectable = true;
             this.BtnAddRestriction.Click += new System.EventHandler(this.BtnAddRestriction_Click);
             // 
+            // RbtnCustomAPI
+            // 
+            this.RbtnCustomAPI.AutoSize = true;
+            this.RbtnCustomAPI.Location = new System.Drawing.Point(191, 4);
+            this.RbtnCustomAPI.Name = "RbtnCustomAPI";
+            this.RbtnCustomAPI.Size = new System.Drawing.Size(65, 15);
+            this.RbtnCustomAPI.TabIndex = 19;
+            this.RbtnCustomAPI.Text = "Custom";
+            this.RbtnCustomAPI.UseSelectable = true;
+            // 
+            // RbtnGLPKAPI
+            // 
+            this.RbtnGLPKAPI.AutoSize = true;
+            this.RbtnGLPKAPI.Checked = true;
+            this.RbtnGLPKAPI.Location = new System.Drawing.Point(134, 4);
+            this.RbtnGLPKAPI.Name = "RbtnGLPKAPI";
+            this.RbtnGLPKAPI.Size = new System.Drawing.Size(51, 15);
+            this.RbtnGLPKAPI.TabIndex = 18;
+            this.RbtnGLPKAPI.TabStop = true;
+            this.RbtnGLPKAPI.Text = "GLPK";
+            this.RbtnGLPKAPI.UseSelectable = true;
+            // 
+            // LblAPI
+            // 
+            this.LblAPI.AutoSize = true;
+            this.LblAPI.Location = new System.Drawing.Point(3, 0);
+            this.LblAPI.Name = "LblAPI";
+            this.LblAPI.Size = new System.Drawing.Size(125, 19);
+            this.LblAPI.TabIndex = 17;
+            this.LblAPI.Text = "API Para Resolução:";
+            // 
+            // metroPanel1
+            // 
+            this.metroPanel1.Controls.Add(this.RbtnGLPKAPI);
+            this.metroPanel1.Controls.Add(this.RbtnCustomAPI);
+            this.metroPanel1.Controls.Add(this.LblAPI);
+            this.metroPanel1.HorizontalScrollbarBarColor = true;
+            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.HorizontalScrollbarSize = 10;
+            this.metroPanel1.Location = new System.Drawing.Point(23, 77);
+            this.metroPanel1.Name = "metroPanel1";
+            this.metroPanel1.Size = new System.Drawing.Size(257, 21);
+            this.metroPanel1.TabIndex = 20;
+            this.metroPanel1.VerticalScrollbarBarColor = true;
+            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // metroPanel2
+            // 
+            this.metroPanel2.Controls.Add(this.RbtnMax);
+            this.metroPanel2.Controls.Add(this.RbtnMin);
+            this.metroPanel2.Controls.Add(this.metroLabel1);
+            this.metroPanel2.HorizontalScrollbarBarColor = true;
+            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.HorizontalScrollbarSize = 10;
+            this.metroPanel2.Location = new System.Drawing.Point(23, 111);
+            this.metroPanel2.Name = "metroPanel2";
+            this.metroPanel2.Size = new System.Drawing.Size(354, 28);
+            this.metroPanel2.TabIndex = 21;
+            this.metroPanel2.VerticalScrollbarBarColor = true;
+            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.VerticalScrollbarSize = 10;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(720, 390);
+            this.ClientSize = new System.Drawing.Size(720, 460);
+            this.Controls.Add(this.metroPanel2);
+            this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.BtnAddRestriction);
-            this.Controls.Add(this.RbtnMin);
-            this.Controls.Add(this.RbtnMax);
-            this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.BtnRemoveRestriction);
             this.Controls.Add(this.GridViewProblem);
             this.Controls.Add(this.BtnDeleteVar);
@@ -212,6 +280,10 @@
             this.Name = "frmMain";
             this.Text = "Simplex GUI";
             ((System.ComponentModel.ISupportInitialize)(this.GridViewProblem)).EndInit();
+            this.metroPanel1.ResumeLayout(false);
+            this.metroPanel1.PerformLayout();
+            this.metroPanel2.ResumeLayout(false);
+            this.metroPanel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,5 +300,10 @@
         private MetroFramework.Controls.MetroRadioButton RbtnMax;
         private MetroFramework.Controls.MetroRadioButton RbtnMin;
         private MetroFramework.Controls.MetroButton BtnAddRestriction;
+        private MetroFramework.Controls.MetroRadioButton RbtnCustomAPI;
+        private MetroFramework.Controls.MetroRadioButton RbtnGLPKAPI;
+        private MetroFramework.Controls.MetroLabel LblAPI;
+        private MetroFramework.Controls.MetroPanel metroPanel1;
+        private MetroFramework.Controls.MetroPanel metroPanel2;
     }
 }

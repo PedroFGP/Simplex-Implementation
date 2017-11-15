@@ -26,7 +26,7 @@ namespace SimplexGUI.Classes
             {
                 if (Variables.ContainsKey(item.Name))
                 {
-                    fullEquation += Variables[item.Name].ToString() + ";" + item.Name + " ";
+                    fullEquation += Variables[item.Name].ToString().Replace(",", ".") + ";" + item.Name + " ";
                 }
             }
 
@@ -77,6 +77,33 @@ namespace SimplexGUI.Classes
             }
 
             return fullEquation.Trim();
+        }
+
+        public string GetDescriptiveEquation()
+        {
+            string fullEquation = Name + ((Name.Equals("FO(Z)")) ? " = " : " -> ");
+
+            for (int i = 0; i < Globals.SimplexVars.Count; i++)
+            {
+                if (Variables.ContainsKey(Globals.SimplexVars[i].Name))
+                {
+                    if(i != 0)
+                    {
+                        fullEquation += ((Variables[Globals.SimplexVars[i].Name] < 0) ? " - " : " + ") + Variables[Globals.SimplexVars[i].Name].ToString() + Globals.SimplexVars[i].Name + " ";
+                    }
+                    else
+                    {
+                        fullEquation += Variables[Globals.SimplexVars[i].Name].ToString() + Globals.SimplexVars[i].Name;
+                    }
+                }
+            }
+
+            if (Operator != null && LimitValue.HasValue)
+            {
+                fullEquation += Operator + " " + LimitValue.ToString();
+            }
+
+            return fullEquation;
         }
     }
 }
