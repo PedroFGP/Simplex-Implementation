@@ -8,7 +8,7 @@ Back End desenvolvido no IDE Eclipse com a linguagem Java e utilizado o serviço
 
 Url para POST: https://simplexotimiza.azurewebsites.net/
 
-Obs: se atentar a formatação dos parâmetros da requisição POST, olhar o código do Front End.
+**Obs: se atentar a formatação dos parâmetros da requisição POST, olhar o código do Front End.**
 
 ## Front End
 
